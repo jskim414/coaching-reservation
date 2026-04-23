@@ -31,7 +31,9 @@ async function sendPaymentPendingSms({ booking, service, slot }) {
     "[유튜브, 클코형 프로그램]",
     "예약 신청이 접수되었습니다.",
     "<프로그램비 입금 안내>",
+    ` - 입금 금액: ${Number(service.price || 0).toLocaleString("ko-KR")}원`,
     ` - 입금 계좌: ${operationSettings.payment_account_bank} ${operationSettings.payment_account_number} ${operationSettings.payment_account_holder}`,
+    ` - 입금자명: ${booking.name}`,
     ` - 입금 기한: ${formatLocalTimestamp(paymentDeadline)}`,
     "입금 확인 후 최종 확정됩니다. 예약 최종 확정 이후에는 중복 신청 외에는 환불이 불가합니다.",
     "<신청 서비스 안내>",
@@ -50,7 +52,9 @@ async function sendConfirmedSms({ booking, service, slot }) {
   const text = [
     "[유튜브, 클코형 프로그램]",
     "예약이 최종 확정되었습니다.",
+    ` - 신청자명: ${booking.name}`,
     ` - 서비스: ${service.name}`,
+    ` - 입금 금액: ${Number(service.price || 0).toLocaleString("ko-KR")}원`,
     ` - 일시: ${formatLocalTimestamp(slot.start_at)}`,
     ` - 장소/방식: ${booking.email} 로 추후 안내 예정`,
   ].join("\n");
