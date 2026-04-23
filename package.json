@@ -1,0 +1,23 @@
+{
+  "name": "coaching-reservation",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "build": "npm --prefix client install && npm run client:build",
+    "client:dev": "npm --prefix client run dev",
+    "client:build": "npm --prefix client run build"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "google-auth-library": "^10.6.2",
+    "pg": "^8.16.3",
+    "solapi": "^4.0.3"
+  }
+}

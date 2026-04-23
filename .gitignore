@@ -1,0 +1,14 @@
+node_modules/
+.env
+data/*.db
+data/*.db-*
+data/operation-settings.json
+client/node_modules/
+client/dist/
+public/
+*.log
+*.out
+*.err
+.tmp-*
+
+.vercel
