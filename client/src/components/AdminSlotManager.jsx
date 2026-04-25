@@ -78,11 +78,6 @@ export default function AdminSlotManager({
   }, [slotStatusFilter, slots]);
 
   useEffect(() => {
-    if (!selectedServiceId && services.length > 0) {
-      onSelectService(services[0].id);
-      return;
-    }
-
     const selectedSlot = slots.find((slot) => slot.id === selectedSlotId);
 
     if (selectedSlot) {
@@ -106,8 +101,17 @@ export default function AdminSlotManager({
         capacity: String(selectedService.capacity_default),
         is_open: true,
       });
+      return;
     }
-  }, [onSelectService, selectedServiceId, selectedSlotId, services, slots]);
+
+    setForm({
+      service_id: "",
+      start_at: "",
+      end_at: "",
+      capacity: "",
+      is_open: true,
+    });
+  }, [selectedServiceId, selectedSlotId, services, slots]);
 
   function handleChange(event) {
     const { name, value, type, checked } = event.target;
