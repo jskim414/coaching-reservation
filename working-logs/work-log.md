@@ -175,3 +175,12 @@
 - 프런트에서 읽는 환경변수 범위를 `VITE_*`로 제한하고, Google Client ID만 명시적으로 주입하도록 조정했다.
 - 현재 코드 기준으로 SOLAPI, Telegram, 세션 시크릿 문자열이 프런트 소스와 빌드 산출물에 직접 포함되는 흔적은 확인하지 못했다.
 - 다만 Vercel 배포를 사용할 경우 SQLite 파일과 `data/operation-settings.json` 쓰기 방식은 지속성 문제가 있어 별도 대안이 필요하다.
+
+## 13. 2026-04-25 공개 홈페이지 디자인 개편
+
+- `docs/benchmark/clay` 디자인 가이드를 기준으로 공개 홈페이지의 시각 스타일을 개편했다.
+- warm cream 배경, oat border, dashed border, matcha/lemon/ube 계열 swatch, hard shadow hover를 적용했다.
+- 예약 신청/조회/완료 화면의 사용자 문구를 짧고 행동 중심으로 정리했다.
+- 초록색 히어로 카드는 단순 경로 안내 대신 `예약 전 체크` 카드로 변경했다.
+- 기능, API, DB 변경 없이 프론트엔드 디자인과 문구만 수정했다.
+- `npm --prefix client run build` 통과를 확인했다.

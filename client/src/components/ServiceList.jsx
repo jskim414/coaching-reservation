@@ -15,10 +15,10 @@ export default function ServiceList({ items, selectedServiceId, onSelect }) {
     <section className="panel">
       <div className="panel-header">
         <span className="eyebrow">1단계</span>
-        <h2>예약할 항목을 선택해 주세요.</h2>
+        <h2>먼저 필요한 코칭을 고르세요.</h2>
       </div>
 
-      {items.length === 0 ? <p className="muted">현재 예약 가능한 항목이 없습니다.</p> : null}
+      {items.length === 0 ? <p className="muted">지금 열려 있는 예약 항목이 없습니다.</p> : null}
 
       <div className="service-grid">
         {items.map((service) => {

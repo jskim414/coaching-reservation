@@ -435,55 +435,37 @@ export default function App() {
     route.name === "bookingStatus"
       ? {
           eyebrow: "예약 조회",
-          title: "예약 내역을 조회해 주세요.",
-          description: "이름, 전화번호, 예약 비밀번호로 예약 상태를 확인할 수 있습니다.",
-          cardLabel: "조회 안내",
-          cardTitle: "예약 상태 확인",
-          cardSubtitle: "예약 비밀번호 4자리를 준비해 주세요.",
+          title: "접수한 예약을 다시 확인하세요.",
+          description: "이름과 전화번호로 예약을 찾고, 신청 때 만든 4자리 비밀번호로 상세 상태를 확인합니다.",
         }
       : route.name === "bookingComplete"
         ? {
             eyebrow: "예약 접수 완료",
-            title: "예약 신청이 접수되었습니다.",
-            description: "안내 문자를 확인한 뒤 입금을 진행해 주세요. 예약 조회는 이름, 전화번호, 예약 비밀번호로 확인할 수 있습니다.",
-            cardLabel: "다음 단계",
-            cardTitle: "문자 안내 확인",
-            cardSubtitle: "입금 확인 후 예약이 확정됩니다.",
+            title: "예약 신청을 받아두었습니다.",
+            description: "안내 문자를 확인한 뒤 입금을 진행해 주세요. 입금 확인 후 예약이 최종 확정됩니다.",
           }
         : route.name === "adminLogin"
           ? {
               eyebrow: "관리자 로그인",
-              title: "관리자 전용 화면은 Google 로그인 뒤에 접근합니다.",
-              description: "메인 화면 메뉴에서는 관리자 링크를 노출하지 않으며, `/admin8630` 또는 `/admin8630/login` 경로로 직접 접속합니다.",
-              cardLabel: "접근 방식",
-              cardTitle: "직접 URL 입력",
-              cardSubtitle: "허용된 관리자 계정만 로그인할 수 있습니다.",
+              title: "운영자는 Google 로그인 후 접근합니다.",
+              description: "관리자 화면은 공개 메뉴에 노출하지 않습니다. `/admin8630` 또는 `/admin8630/login` 경로로 직접 접속합니다.",
             }
           : route.name === "admin"
             ? {
                 eyebrow: "관리자 화면",
-                title: "예약 검색, 삭제, 메모, 서비스와 일정 관리를 한 화면에서 처리합니다.",
-                description: "관리자는 기간 필터, 예약 일괄 삭제, 상세 삭제, 내부 메모, 메시지 로그, 서비스와 일정 관리를 모두 사용할 수 있습니다.",
-                cardLabel: "운영 포인트",
-                cardTitle: "수동 운영 최적화",
-                cardSubtitle: "예약 관리 편의 기능을 강화했습니다.",
+                title: "예약 운영에 필요한 일을 한 화면에서 처리합니다.",
+                description: "예약 검색, 상태 관리, 내부 메모, 메시지 로그, 서비스와 일정 관리를 한 흐름으로 확인합니다.",
               }
             : route.name === "notFound"
               ? {
                   eyebrow: "경로 오류",
                   title: "잘못된 주소로 접속했습니다.",
                   description: "예약 신청 또는 예약 조회 경로로 다시 이동해 주세요.",
-                  cardLabel: "바로가기",
-                  cardTitle: "유효한 경로로 이동 필요",
-                  cardSubtitle: "관리자 화면은 직접 URL로 접속할 수 있습니다.",
                 }
               : {
                   eyebrow: "예약 신청",
-                  title: "원하는 시간대를 선택하고 예약을 신청해 주세요.",
-                  description: "서비스와 시간을 선택한 뒤 신청 정보를 입력하면 예약이 접수됩니다.",
-                  cardLabel: "진행 순서",
-                  cardTitle: "서비스 선택 후 정보 입력",
-                  cardSubtitle: "접수 후 문자 안내에 따라 예약을 진행합니다.",
+                  title: "나에게 맞는 코칭 시간을 골라두세요.",
+                  description: "서비스와 시간을 고르고 신청 정보를 남기면 예약이 접수됩니다. 이후 문자 안내에 따라 확정 절차를 진행합니다.",
                 };
 
   const publicActive = route.name === "publicHome" || route.name === "bookingComplete";
@@ -493,6 +475,11 @@ export default function App() {
     <div className="app-shell">
       <header className="hero">
         <div className="hero-copy">
+          <div className="hero-stamps" aria-hidden="true">
+            <span>1:1</span>
+            <span>Seoul time</span>
+            <span>SMS guide</span>
+          </div>
           <span className="eyebrow">{heroContent.eyebrow}</span>
           <h1>{heroContent.title}</h1>
           <p>{heroContent.description}</p>
@@ -508,14 +495,13 @@ export default function App() {
 
           {route.name === "publicHome" ? (
             <section className="hero-help">
-              <span className="pending-badge">만약 원하시는 시간대가 없다면?</span>
+              <span className="pending-badge">원하는 시간대가 없다면</span>
               <p className="hero-help-text">
-                만약 원하시는 시간대가 없거나 마감되셨다면, 미리 예약리스트에 등록해주십시오. 새로운 일정이 업데이트될
-                때마다 메일로 안내드리겠습니다.
+                가능한 시간이 모두 마감되었거나 맞는 시간이 없다면 예약 리스트에 남겨 주세요. 새 일정이 열릴 때 메일로 안내드립니다.
               </p>
               <div className="stack-actions hero-actions">
                 <a href={PRE_REGISTER_FORM_URL} className="secondary-button" target="_blank" rel="noreferrer">
-                  예약 리스트 등록
+                  예약 리스트에 남기기
                 </a>
               </div>
             </section>
@@ -523,20 +509,22 @@ export default function App() {
         </div>
 
         <div className="hero-card">
-          <span>{heroContent.cardLabel}</span>
-          <strong>{heroContent.cardTitle}</strong>
-          <p>{heroContent.cardSubtitle}</p>
-          <code className="route-path">
-            {route.name === "bookingStatus"
-              ? ROUTES.bookingStatus
-              : route.name === "bookingComplete"
-                ? ROUTES.bookingComplete
-                : route.name === "adminLogin"
-                  ? ROUTES.adminLogin
-                  : route.name === "admin"
-                    ? ROUTES.admin
-                    : ROUTES.publicHome}
-          </code>
+          <span>Before booking</span>
+          <strong>예약 전 세 가지만 확인해 주세요.</strong>
+          <ol className="hero-checklist">
+            <li>
+              <span>01</span>
+              <p>입금자명은 신청자명과 같게 입력해 주세요.</p>
+            </li>
+            <li>
+              <span>02</span>
+              <p>예약 조회용 4자리 비밀번호를 기억해 주세요.</p>
+            </li>
+            <li>
+              <span>03</span>
+              <p>접수 후 문자 안내에 따라 입금을 진행하면 예약이 확정됩니다.</p>
+            </li>
+          </ol>
         </div>
       </header>
 

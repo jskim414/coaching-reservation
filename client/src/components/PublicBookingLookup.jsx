@@ -112,7 +112,7 @@ export default function PublicBookingLookup({ onStartBooking }) {
       <section className="panel lookup-panel">
         <div className="panel-header">
           <span className="eyebrow">예약 조회</span>
-          <h2>예약 내역을 조회해 주세요.</h2>
+          <h2>접수한 예약을 찾아보세요.</h2>
         </div>
 
         <form className="lookup-form" onSubmit={handleSearch}>
@@ -122,14 +122,14 @@ export default function PublicBookingLookup({ onStartBooking }) {
           </label>
           <label>
             <span>전화번호</span>
-            <input name="phone" value={form.phone} onChange={handleChange} placeholder="01012345678" />
+            <input name="phone" value={form.phone} onChange={handleChange} placeholder="휴대폰 번호" />
           </label>
           <div className="stack-actions">
             <button type="submit" className="primary-button">
               조회하기
             </button>
             <button type="button" className="secondary-button" onClick={onStartBooking}>
-              새 예약 신청하기
+              다른 예약 신청하기
             </button>
           </div>
         </form>
@@ -159,9 +159,9 @@ export default function PublicBookingLookup({ onStartBooking }) {
         <section className="panel state-panel">
           <div className="panel-header">
             <span className="eyebrow">조회 안내</span>
-            <h2>이름과 전화번호를 입력해 주세요.</h2>
+            <h2>신청자 이름과 전화번호를 입력하세요.</h2>
           </div>
-          <p className="muted">조회된 예약을 선택한 뒤 예약 비밀번호를 입력하면 상세 내용을 확인할 수 있습니다.</p>
+          <p className="muted">예약을 선택한 뒤 4자리 비밀번호를 입력하면 상세 내용을 확인할 수 있습니다.</p>
         </section>
       ) : null}
 
@@ -211,7 +211,7 @@ export default function PublicBookingLookup({ onStartBooking }) {
         <section className="panel">
           <div className="panel-header">
             <span className="eyebrow">상세 확인</span>
-            <h2>예약 비밀번호를 입력해 주세요.</h2>
+            <h2>4자리 비밀번호를 입력하세요.</h2>
           </div>
 
           <form className="lookup-form" onSubmit={handleDetailSubmit}>
@@ -274,7 +274,7 @@ export default function PublicBookingLookup({ onStartBooking }) {
 
           <div className="detail-note">
             <span className="result-label">안내</span>
-            <p>입금 확인 전에는 예약이 최종 확정되지 않습니다. 문의가 필요하면 예약 번호를 함께 전달해 주세요.</p>
+            <p>입금 확인 전에는 예약이 최종 확정되지 않습니다. 문의가 필요하면 예약 번호를 함께 알려 주세요.</p>
           </div>
         </section>
       ) : null}

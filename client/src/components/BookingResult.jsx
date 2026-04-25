@@ -41,7 +41,7 @@ export default function BookingResult({ booking, onReset, onLookup }) {
       <section className="panel panel-success">
         <div className="panel-header">
           <span className="eyebrow">접수 완료</span>
-          <h2>예약 신청이 접수되었습니다.</h2>
+          <h2>예약 신청을 받아두었습니다.</h2>
         </div>
 
         <div className="result-grid">
@@ -66,10 +66,10 @@ export default function BookingResult({ booking, onReset, onLookup }) {
         <section className="payment-guide">
           <div>
             <span className="result-label">안내</span>
-            <strong>안내 문자를 확인한 뒤 입금을 진행해 주세요.</strong>
+            <strong>문자 안내를 확인하고 입금을 진행해 주세요.</strong>
           </div>
           <p className="muted">
-            예약 조회는 이름, 전화번호, 예약 비밀번호로 확인할 수 있습니다.
+            예약 조회 화면에서 이름, 전화번호, 예약 비밀번호로 접수 상태를 다시 확인할 수 있습니다.
           </p>
           <ul className="guide-list">
             <li>입금 확인 후 예약이 확정됩니다.</li>
@@ -83,7 +83,7 @@ export default function BookingResult({ booking, onReset, onLookup }) {
             예약 조회로 이동
           </button>
           <button type="button" className="secondary-button" onClick={onReset}>
-            새 예약 신청하기
+            다른 시간 예약하기
           </button>
         </div>
       </section>

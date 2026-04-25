@@ -41,7 +41,7 @@ export default function BookingForm({ disabled, selectedService, selectedSlot, o
     <section className="panel">
       <div className="panel-header">
         <span className="eyebrow">3단계</span>
-        <h2>예약 정보를 입력해 주세요.</h2>
+        <h2>마지막으로 신청 정보를 남겨 주세요.</h2>
       </div>
 
       <div className="inline-note">
@@ -72,7 +72,7 @@ export default function BookingForm({ disabled, selectedService, selectedSlot, o
             name="phone"
             value={form.phone}
             onChange={handleChange}
-            placeholder="01012345678"
+            placeholder="휴대폰 번호"
             required
             disabled={disabled}
           />
@@ -88,12 +88,12 @@ export default function BookingForm({ disabled, selectedService, selectedSlot, o
           />
         </label>
         <label>
-          <span>추가 요청사항 (선택)</span>
+          <span>코칭 전에 전할 내용 (선택)</span>
           <textarea
             name="note"
             value={form.note}
             onChange={handleChange}
-            placeholder="남기고 싶은 내용이 있으면 적어 주세요."
+            placeholder="상황, 기대하는 변화, 미리 전할 내용을 적어 주세요."
             rows="4"
             disabled={disabled}
           />
@@ -101,7 +101,7 @@ export default function BookingForm({ disabled, selectedService, selectedSlot, o
 
         <section className="sub-form-section">
           <div className="panel-header compact">
-            <span className="eyebrow">환불 정보</span>
+            <span className="eyebrow">정산 정보</span>
             <h3>환불 계좌 정보</h3>
           </div>
           <div className="admin-form-row">
@@ -111,7 +111,7 @@ export default function BookingForm({ disabled, selectedService, selectedSlot, o
                 name="refundBank"
                 value={form.refundBank}
                 onChange={handleChange}
-                placeholder="예: 국민은행"
+                placeholder="은행명"
                 required
                 disabled={disabled}
               />
@@ -142,7 +142,7 @@ export default function BookingForm({ disabled, selectedService, selectedSlot, o
         </section>
 
         <label>
-          <span>예약 조회 비밀번호</span>
+          <span>예약 조회용 비밀번호</span>
           <input
             name="bookingPassword"
             type="password"
@@ -159,7 +159,7 @@ export default function BookingForm({ disabled, selectedService, selectedSlot, o
         </label>
 
         <button type="submit" className="primary-button" disabled={disabled || submitting}>
-          {submitting ? "예약을 접수하는 중입니다..." : "예약 접수하기"}
+          {submitting ? "예약을 접수하는 중입니다..." : "이 시간으로 예약하기"}
         </button>
       </form>
     </section>

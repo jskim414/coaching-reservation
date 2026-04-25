@@ -31,12 +31,12 @@ export default function SlotList({ loading, items, selectedSlotId, onSelect }) {
     <section className="panel">
       <div className="panel-header">
         <span className="eyebrow">2단계</span>
-        <h2>예약 가능한 시간을 선택해 주세요.</h2>
+        <h2>이어 가능한 시간을 선택하세요.</h2>
       </div>
 
-      {loading ? <p className="muted">예약 가능한 시간을 불러오는 중입니다.</p> : null}
+      {loading ? <p className="muted">선택 가능한 시간을 확인하고 있습니다.</p> : null}
 
-      {!loading && items.length === 0 ? <p className="muted">선택한 항목에 예약 가능한 시간이 없습니다.</p> : null}
+      {!loading && items.length === 0 ? <p className="muted">이 항목에는 현재 열려 있는 시간이 없습니다.</p> : null}
 
       <div className="slot-list">
         {items.map((slot) => {
