@@ -18,12 +18,24 @@ const BOOKING_STATUSES = new Set([
 const EXPIRATION_WINDOW_MS = 12 * 60 * 60 * 1000;
 
 async function listServices() {
+  await expireStalePendingBookings();
+
+  const now = toIsoString(new Date());
+
   return db.all(`
     SELECT id, type, name, description, duration_min, price, capacity_default, is_active
     FROM services
     WHERE is_active = 1
+      AND EXISTS (
+        SELECT 1
+        FROM slots
+        WHERE slots.service_id = services.id
+          AND slots.is_open = 1
+          AND slots.start_at > ?
+          AND slots.capacity > slots.reserved_count
+      )
     ORDER BY id ASC
-  `);
+  `, now);
 }
 
 async function getService(serviceId) {
@@ -44,7 +56,14 @@ async function listSlots({ serviceId }) {
   await expireStalePendingBookings();
 
   const params = [];
-  const conditions = ["slots.is_open = 1"];
+  const conditions = [
+    "services.is_active = 1",
+    "slots.is_open = 1",
+    "slots.start_at > ?",
+    "slots.capacity > slots.reserved_count",
+  ];
+
+  params.push(toIsoString(new Date()));
 
   if (serviceId) {
     conditions.push("slots.service_id = ?");
