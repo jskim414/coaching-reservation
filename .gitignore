@@ -6,6 +6,7 @@ data/operation-settings.json
 client/node_modules/
 client/dist/
 public/
+docs/
 *.log
 *.out
 *.err
