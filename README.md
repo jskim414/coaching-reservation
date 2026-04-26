@@ -182,6 +182,40 @@ curl -X POST http://localhost:4000/api/auth/google \
 - 관리자 로그인: `http://localhost:5173/admin/login`
 - 관리자 화면: `http://localhost:5173/admin`
 
+## 운영자가 직접 변경해야 하는 항목
+
+공개 저장소에는 실제 비밀값을 커밋하지 말고, 운영 환경의 `.env` 또는 Vercel 환경변수에서만 설정합니다.
+
+### 환경변수
+
+- `GOOGLE_CLIENT_ID`: 운영 Google OAuth Client ID
+- `SESSION_SECRET`: 운영용 긴 랜덤 문자열
+- `ADMIN_ALLOWLIST_EMAIL`: 관리자 로그인 허용 이메일
+- `CONTACT_PHONE`: 예약자에게 노출되는 문의 전화번호
+- `TELEGRAM_BOT_TOKEN`: Telegram BotFather에서 발급받은 봇 토큰
+- `TELEGRAM_CHAT_ID`: 운영자 알림을 받을 Telegram 채팅 ID
+- `SMS_ENABLED`: 운영 발송 전까지 `false`, 실발송 시 `true`
+- `SOLAPI_API_KEY`: SOLAPI API Key
+- `SOLAPI_API_SECRET`: SOLAPI API Secret
+- `SOLAPI_SENDER`: SOLAPI에 등록된 발신번호
+
+### 코드에 남아 있는 운영 문구
+
+현재 아래 문구는 관리자 화면에서 바꾸는 설정이 아니라 코드 수정 후 배포해야 반영됩니다.
+
+- Telegram 신규 예약 알림 제목: `src/services/telegram.service.js`
+- SMS 예약 접수/입금 안내 문구: `src/services/sms.service.js`
+- SMS 예약 확정 문구: `src/services/sms.service.js`
+- 예약 완료/조회 화면 안내 문구: `client/src/components/BookingResult.jsx`, `client/src/components/PublicBookingLookup.jsx`
+- 서비스/슬롯 설명: 관리자 화면에서 생성하거나 수정
+- 입금 계좌 정보: 관리자 화면의 운영 설정에서 수정
+
+### 공개 전 확인할 파일
+
+- `.env`, `.vercel/`, `data/*.db`, `public/`, `*.log`, `.tmp-*` 파일은 `.gitignore`에 포함되어야 합니다.
+- 실제 예약자 이름, 전화번호, 이메일이 들어간 DB나 로그 파일은 공개 저장소에 올리지 않습니다.
+- README와 docs에는 실제 토큰, 개인 이메일, 개인 전화번호, 운영 계좌번호를 쓰지 않습니다.
+
 ## 남은 작업
 
 - 실제 Google 로그인 성공 플로우 실검증

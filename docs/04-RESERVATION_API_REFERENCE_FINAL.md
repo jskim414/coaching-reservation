@@ -151,7 +151,7 @@ TELEGRAM_CHAT_ID=your_chat_id
 ### 4-5. Telegram 메시지 예시
 
 ```text
-[린스프린트 신규 예약]
+[신규 예약]
 서비스: 1:1 코칭
 예약자: 홍길동
 일시: 2026-05-01 14:00
@@ -243,7 +243,7 @@ export async function sendSms({ to, text }) {
 
 #### 예약 신청 후 입금 안내
 ```text
-[린스프린트]
+[코칭 예약]
 예약 신청이 접수되었습니다.
 입금 확인 후 최종 확정됩니다.
 서비스: {serviceName}
@@ -253,7 +253,7 @@ export async function sendSms({ to, text }) {
 
 #### 예약 확정
 ```text
-[린스프린트]
+[코칭 예약]
 예약이 최종 확정되었습니다.
 서비스: {serviceName}
 일시: {slotDateTime}

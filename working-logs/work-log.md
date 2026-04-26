@@ -185,4 +185,4 @@
 - 기능, API, DB 변경 없이 프론트엔드 디자인과 문구만 수정했다.
 - `npm --prefix client run build` 통과를 확인했다.
 - 민감정보 패턴 스캔 후 Git commit `7bcac70`으로 `main`에 푸시했다.
-- Vercel production 배포를 완료했고 alias는 `https://coaching-reservation.vercel.app`이다.
+- Vercel production 배포를 완료했다.

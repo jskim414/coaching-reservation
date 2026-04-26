@@ -12,7 +12,7 @@ async function sendTelegramNewBooking({ booking, service, slot }) {
   const payload = await postJson(`/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
     chat_id: TELEGRAM_CHAT_ID,
     text: [
-      "[린스프린트 신규 예약]",
+      "[신규 예약]",
       `서비스: ${service.name}`,
       `예약자: ${booking.name}`,
       `일시: ${formatLocalTimestamp(slot.start_at)}`,

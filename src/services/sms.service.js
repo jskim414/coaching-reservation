@@ -28,7 +28,7 @@ async function sendPaymentPendingSms({ booking, service, slot }) {
   const operationSettings = await getOperationSettings();
 
   const text = [
-    "[유튜브, 클코형 프로그램]",
+    "[코칭 예약]",
     "예약 신청이 접수되었습니다.",
     "<프로그램비 입금 안내>",
     ` - 입금 금액: ${Number(service.price || 0).toLocaleString("ko-KR")}원`,
@@ -50,7 +50,7 @@ async function sendPaymentPendingSms({ booking, service, slot }) {
 
 async function sendConfirmedSms({ booking, service, slot }) {
   const text = [
-    "[유튜브, 클코형 프로그램]",
+    "[코칭 예약]",
     "예약이 최종 확정되었습니다.",
     ` - 신청자명: ${booking.name}`,
     ` - 서비스: ${service.name}`,
